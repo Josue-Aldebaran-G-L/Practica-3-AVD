@@ -21,7 +21,7 @@ with st.sidebar:
     tipo_juego_seleccionado = st.radio('Seleccionar Tipo de Juego', tipos_juego)
 
 # Filtrar los datos
-df_filtrado = df[(df['fran_id'] == equipo_seleccionado) & (df['year_id'] == año_seleccionado)]
+df_filtrado = df[(df['team_id'] == equipo_seleccionado) & (df['year_id'] == año_seleccionado)]
 
 if tipo_juego_seleccionado == 'Temporada Regular':
     df_filtrado = df_filtrado[df_filtrado['is_playoffs'] == 0]

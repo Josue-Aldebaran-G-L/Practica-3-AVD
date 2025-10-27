@@ -39,23 +39,27 @@ df_filtrado['derrota'] = (df_filtrado['game_result'] == 'L').astype(int)
 df_filtrado['victorias_acumuladas'] = df_filtrado['victoria'].cumsum()
 df_filtrado['derrotas_acumuladas'] = df_filtrado['derrota'].cumsum()
 
+col1, col2 = st.columns(2)
+
 # Gráfica de líneas para victorias y derrotas acumuladas
 if not df_filtrado.empty:
-    fig_linea = px.line(
-        df_filtrado, 
-        x='date_game', 
-        y=['victorias_acumuladas', 'derrotas_acumuladas'],
-        labels={'value': 'Cantidad', 'date_game': 'Fecha', 'variable': 'Tipo'},
-        title='Victorias y Derrotas Acumuladas'
-    )
-    fig_linea.update_layout(
-        legend_title_text='Resultado',
-        yaxis_title='Cantidad',
-        xaxis_title='Fecha'
-    )
-    st.plotly_chart(fig_linea)
+    with col1:
+        fig_linea = px.line(
+            df_filtrado, 
+            x='date_game', 
+            y=['victorias_acumuladas', 'derrotas_acumuladas'],
+            labels={'value': 'Cantidad', 'date_game': 'Fecha', 'variable': 'Tipo'},
+            title='Victorias y Derrotas Acumuladas'
+        )
+        fig_linea.update_layout(
+            legend_title_text='Resultado',
+            yaxis_title='Cantidad',
+            xaxis_title='Fecha'
+        )
+        st.plotly_chart(fig_linea)
 else:
-    st.write('No hay datos para esta selección.')
+    with col1:
+        st.write('No hay datos para esta selección.')
 
 # Gráfica de pastel para porcentaje de victorias y derrotas
 total_juegos = len(df_filtrado)
@@ -67,12 +71,14 @@ if total_juegos > 0:
         'Resultado': ['Victorias', 'Derrotas'],
         'Porcentaje': [total_victorias / total_juegos * 100, total_derrotas / total_juegos * 100]
     })
-    fig_pastel = px.pie(
-        datos_pastel, 
-        values='Porcentaje', 
-        names='Resultado',
-        title='Porcentaje de Victorias y Derrotas'
-    )
-    st.plotly_chart(fig_pastel)
+    with col2:
+        fig_pastel = px.pie(
+            datos_pastel, 
+            values='Porcentaje', 
+            names='Resultado',
+            title='Porcentaje de Victorias y Derrotas'
+        )
+        st.plotly_chart(fig_pastel)
 else:
-    st.write('No se jugaron partidos.')
+    with col2:
+        st.write('No se jugaron partidos.')

@@ -2,21 +2,18 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Cargar el dataset
 df = pd.read_csv("https://raw.githubusercontent.com/Josue-Aldebaran-G-L/Practica-3-AVD/main/nba_all_elo.csv")
 df['date_game'] = pd.to_datetime(df['date_game'], format='%m/%d/%Y')
 
-# Título del dashboard
 st.title('Dashboard NBA')
 
-# Barra lateral
 with st.sidebar:
     # Selector de año
     años = sorted(df['year_id'].unique(), reverse=True)
     año_seleccionado = st.selectbox('Seleccionar Año', años)
     
     # Selector de equipo
-    equipos = sorted(df['fran_id'].unique())
+    equipos = sorted(df['team_id'].unique())
     equipo_seleccionado = st.selectbox('Seleccionar Equipo', equipos)
     
     # Selector de tipo de juego

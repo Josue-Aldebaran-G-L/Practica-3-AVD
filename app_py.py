@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Cargar el dataset
-df = pd.read_csv("https://github.com/Josue-Aldebaran-G-L/Practica-3-AVD/blob/main/nba_all_elo.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/Josue-Aldebaran-G-L/Practica-3-AVD/main/nba_all_elo.csv")
 df['date_game'] = pd.to_datetime(df['date_game'], format='%m/%d/%Y')
 
 # Título del dashboard

@@ -39,7 +39,7 @@ df_filtrado['derrota'] = (df_filtrado['game_result'] == 'L').astype(int)
 df_filtrado['victorias_acumuladas'] = df_filtrado['victoria'].cumsum()
 df_filtrado['derrotas_acumuladas'] = df_filtrado['derrota'].cumsum()
 
-col1, col2 = st.columns([6, 4])
+col1, col2 = st.columns([7, 3.5])
 
 # Gráfica de líneas para victorias y derrotas acumuladas
 if not df_filtrado.empty:

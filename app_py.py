@@ -49,7 +49,8 @@ if not df_filtrado.empty:
             x='date_game', 
             y=['victorias_acumuladas', 'derrotas_acumuladas'],
             labels={'value': 'Cantidad', 'date_game': 'Fecha', 'variable': 'Tipo'},
-            title='Victorias y Derrotas Acumuladas'
+            title='Victorias y Derrotas Acumuladas',
+            hover_data={'date_game': True, 'victorias_acumuladas': True, 'derrotas_acumuladas': True}
         )
         fig_linea.update_layout(
             legend_title_text='Resultado',

@@ -49,16 +49,7 @@ if not df_filtrado.empty:
             x='date_game', 
             y=['victorias_acumuladas', 'derrotas_acumuladas'],
             labels={'value': 'Cantidad', 'date_game': 'Fecha', 'variable': 'Tipo'},
-            title='Victorias y Derrotas Acumuladas',
-            hover_data={'date_game': True, 'victorias_acumuladas': True, 'derrotas_acumuladas': True}
-        )
-        
-        fig_linea.update_traces(
-            hovertemplate=
-            '<b>Fecha:</b> %{x}<br>' +
-            '<b>Victorias acumuladas:</b> %{y[0]}<br>' +  # Para la primera serie de datos (victorias)
-            '<b>Derrotas acumuladas:</b> %{y[1]}<br>' +  # Para la segunda serie de datos (derrotas)
-            '<extra></extra>'  # Elimina la leyenda extra
+            title='Victorias y Derrotas Acumuladas'
         )
         
         fig_linea.update_layout(
